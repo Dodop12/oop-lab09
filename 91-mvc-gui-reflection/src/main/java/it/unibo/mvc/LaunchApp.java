@@ -37,7 +37,7 @@ public final class LaunchApp {
         final DrawNumberController app = new DrawNumberControllerImpl(model);
 
         for (final var vClass : List.of("Stdout", "Swing")) {
-            final var viewClass = Class.forName("it.unibo.mvc.api.DrawNumber" + vClass + "View");
+            final var viewClass = Class.forName("it.unibo.mvc.view.DrawNumber" + vClass + "View");
             final var viewInstance = viewClass.getConstructor().newInstance();
 
             // '.class' is used to consider the interface 'DrawNumberView' as a class type
