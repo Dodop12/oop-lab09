@@ -7,7 +7,7 @@ import it.unibo.mvc.api.DrawResult;
 public class DrawNumberStdoutView implements DrawNumberView {
 
     @Override
-    public void setController(DrawNumberController observer) {
+    public void setController(final DrawNumberController observer) {
 
     }
 
@@ -17,7 +17,7 @@ public class DrawNumberStdoutView implements DrawNumberView {
     }
 
     @Override
-    public void result(DrawResult res) {
+    public void result(final DrawResult res) {
         System.out.println(res.getDescription());
     }
 }
