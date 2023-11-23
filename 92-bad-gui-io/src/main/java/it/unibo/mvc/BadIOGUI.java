@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -47,11 +48,13 @@ public class BadIOGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         final JPanel newPanel = new JPanel();
-        canvas.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
+        newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
         newPanel.add(write);
+        canvas.add(newPanel, BoxLayout.X_AXIS);
 
         final JButton read = new JButton("Read from file");
-        canvas.add(read, BorderLayout.CENTER);
+        newPanel.add(read, BorderLayout.CENTER);
+
         /*
          * Handlers
          */
@@ -73,6 +76,18 @@ public class BadIOGUI {
                 }
             }
         });
+
+        read.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    List<String> lines = Files.readAllLines(new File(PATH).toPath());
+                } catch (Exception e) {
+                    // TODO: handle exception
+                }
+            }
+            
+        })
     }
 
     private void display() {
@@ -98,6 +113,8 @@ public class BadIOGUI {
          * OK, ready to push the frame onscreen
          */
         frame.setVisible(true);
+
+        frame.pack();
     }
 
     /**
