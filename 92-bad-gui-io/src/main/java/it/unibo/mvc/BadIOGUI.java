@@ -45,6 +45,13 @@ public class BadIOGUI {
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        final JPanel newPanel = new JPanel();
+        canvas.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
+        newPanel.add(write);
+
+        final JButton read = new JButton("Read from file");
+        canvas.add(read, BorderLayout.CENTER);
         /*
          * Handlers
          */
@@ -99,6 +106,6 @@ public class BadIOGUI {
      * @param args ignored
      */
     public static void main(final String... args) {
-       new BadIOGUI().display();
+        new BadIOGUI().display();
     }
 }
