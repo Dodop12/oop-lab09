@@ -10,8 +10,13 @@ import java.nio.charset.StandardCharsets;
  */
 public class Controller {
     private static final String SEP = File.separator;
+    private static final String DEFAULT_PATH = System.getProperty("user.home") + SEP + "output.txt";
 
     private File file;
+
+    public Controller() {
+        this.file = new File(DEFAULT_PATH);
+    }
 
     public File getFile() {
         return file;
