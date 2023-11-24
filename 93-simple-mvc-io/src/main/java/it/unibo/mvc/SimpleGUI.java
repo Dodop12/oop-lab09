@@ -37,12 +37,12 @@ public final class SimpleGUI {
 
         save.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 try {
                     controller.saveString(textArea.getText());
                     System.out.println("Successfully saved on " + controller.getFilePath());
                     JOptionPane.showMessageDialog(frame, "Successfully saved on " + controller.getFilePath());
-                } catch (IOException e1) {
+                } catch (final IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error occurred while trying to save",
                             JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace();
@@ -62,7 +62,7 @@ public final class SimpleGUI {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         new SimpleGUI(new Controller()).display();
     }
 
