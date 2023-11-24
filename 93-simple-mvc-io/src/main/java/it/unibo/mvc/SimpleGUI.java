@@ -19,8 +19,9 @@ import java.io.IOException;
  */
 public final class SimpleGUI {
 
-    private final JFrame frame = new JFrame("My first Java graphical interface");
     private static final int PROPORTION = 3;
+
+    private final JFrame frame = new JFrame("My first Java graphical interface");
 
     public SimpleGUI(final Controller controller) {
         final JPanel canvas = new JPanel();
@@ -39,6 +40,8 @@ public final class SimpleGUI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     controller.saveString(textArea.getText());
+                    System.out.println("Successfully saved on " + controller.getFilePath());
+                    JOptionPane.showMessageDialog(frame, "Successfully saved on " + controller.getFilePath());
                 } catch (IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error occurred while trying to save",
                             JOptionPane.ERROR_MESSAGE);
