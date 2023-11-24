@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  */
 public final class SimpleGUIWithFileChooser {
 
-    private static final int PROPORTION = 3;
+    private static final int PROPORTION = 4;
 
     private final JFrame frame = new JFrame();
 
@@ -39,6 +39,7 @@ public final class SimpleGUIWithFileChooser {
 
         final JTextField browseField = new JTextField();
         browser.add(browseField, BorderLayout.CENTER);
+        browseField.setEditable(false);
 
         final JButton browseButton = new JButton("Browse...");
         browser.add(browseButton, BorderLayout.LINE_END);
