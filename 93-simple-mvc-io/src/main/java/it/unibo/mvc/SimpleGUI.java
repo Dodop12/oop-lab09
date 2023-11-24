@@ -2,12 +2,16 @@ package it.unibo.mvc;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
 
 /**
  * A very simple program using a graphical interface.
@@ -18,7 +22,7 @@ public final class SimpleGUI {
     private final JFrame frame = new JFrame("My first Java graphical interface");
     private static final int PROPORTION = 3;
 
-    public SimpleGUI() {
+    public SimpleGUI(final Controller controller) {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
 
@@ -29,6 +33,19 @@ public final class SimpleGUI {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setContentPane(canvas);
+
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    controller.saveString(textArea.getText());
+                } catch (IOException e1) {
+                    JOptionPane.showMessageDialog(frame, e1, "Error occurred while trying to save",
+                            JOptionPane.ERROR_MESSAGE);
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
 
     private void display() {
@@ -43,7 +60,7 @@ public final class SimpleGUI {
     }
 
     public static void main(String[] args) {
-        new SimpleGUI().display();
+        new SimpleGUI(new Controller()).display();
     }
 
 }
