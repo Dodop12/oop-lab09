@@ -34,6 +34,7 @@ public class BadIOGUI {
             + File.separator
             + BadIOGUI.class.getSimpleName() + ".txt";
     private static final int PROPORTION = 5;
+
     private final Random randomGenerator = new Random();
     private final JFrame frame = new JFrame(TITLE);
 
