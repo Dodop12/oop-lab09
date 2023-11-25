@@ -23,7 +23,7 @@ public final class SimpleGUIWithFileChooser {
 
     private static final int PROPORTION = 4;
 
-    private final JFrame frame = new JFrame();
+    private final JFrame frame = new JFrame("My second Java graphical interface");
 
     public SimpleGUIWithFileChooser(final Controller controller) {
         // Main panel
