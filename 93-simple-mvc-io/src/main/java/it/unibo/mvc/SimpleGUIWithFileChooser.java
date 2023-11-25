@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,28 +26,16 @@ public final class SimpleGUIWithFileChooser {
     private final JFrame frame = new JFrame();
 
     public SimpleGUIWithFileChooser(final Controller controller) {
+        // Main panel
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
 
+        // Text area
         final JTextArea textArea = new JTextArea();
         canvas.add(textArea, BorderLayout.CENTER);
+        // "Save" button
         final JButton save = new JButton("Save");
         canvas.add(save, BorderLayout.SOUTH);
-
-        final JPanel browser = new JPanel();
-        browser.setLayout(new BorderLayout());
-        canvas.add(browser, BorderLayout.NORTH);
-
-        final JTextField browseField = new JTextField();
-        browser.add(browseField, BorderLayout.CENTER);
-        browseField.setEditable(false);
-
-        final JButton browseButton = new JButton("Browse...");
-        browser.add(browseButton, BorderLayout.LINE_END);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(canvas);
-
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
@@ -61,6 +50,39 @@ public final class SimpleGUIWithFileChooser {
                 }
             }
         });
+
+        // Browse panel
+        final JPanel browser = new JPanel();
+        browser.setLayout(new BorderLayout());
+        canvas.add(browser, BorderLayout.NORTH);
+
+        // Field with the selected file path
+        final JTextField filePath = new JTextField(controller.getFilePath());
+        browser.add(filePath, BorderLayout.CENTER);
+        filePath.setEditable(false); // Can't be modified
+
+        // Button to browse on the file system
+        final JButton browseButton = new JButton("Browse...");
+        browser.add(browseButton, BorderLayout.LINE_END);
+        browseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                final JFileChooser fileChooser = new JFileChooser();
+                final int result = fileChooser.showSaveDialog(frame);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    controller.setFile(fileChooser.getSelectedFile());
+                    filePath.setText(controller.getFilePath());
+                } else if (result == JFileChooser.CANCEL_OPTION) {
+
+                } else {
+                    JOptionPane.showMessageDialog(frame, result, "An error is occurred",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(canvas);
     }
 
     private void display() {
