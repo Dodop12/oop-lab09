@@ -79,5 +79,4 @@ public final class SimpleGUI {
     public static void main(String[] args) {
         new SimpleGUI(new SimpleController()).display();
     }
-
 }

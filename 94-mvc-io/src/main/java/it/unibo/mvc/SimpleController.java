@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * 
+ *
  *
  */
 public final class SimpleController implements Controller {
@@ -41,5 +41,4 @@ public final class SimpleController implements Controller {
         System.out.println(this.nextString);
         this.stringHistory.add(nextString);
     }
-
 }
