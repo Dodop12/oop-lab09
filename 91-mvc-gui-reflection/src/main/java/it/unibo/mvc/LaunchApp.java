@@ -39,7 +39,7 @@ public final class LaunchApp {
 
             for (int i = 0; i < 3; i++) {
                 final var viewInstance = viewClass.getConstructor().newInstance();
-                // '.class' is used to consider the interface 'DrawNumberView' as a class type
+                // '.class' is used to get a class type object of the interface 'DrawNumberView'
                 if (DrawNumberView.class.isAssignableFrom(viewInstance.getClass())) {
                     app.addView((DrawNumberView) viewInstance);
                 }
