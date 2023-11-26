@@ -59,7 +59,7 @@ public final class SimpleGUIWithFileChooser {
         // Field with the selected file path
         final JTextField filePath = new JTextField(controller.getFilePath());
         browser.add(filePath, BorderLayout.CENTER);
-        filePath.setEditable(false); // Can't be modified
+        filePath.setEditable(false); // Cannot be modified
 
         // Button to browse on the file system
         final JButton browseButton = new JButton("Browse...");
