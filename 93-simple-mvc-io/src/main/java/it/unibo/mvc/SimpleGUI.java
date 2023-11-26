@@ -32,9 +32,6 @@ public final class SimpleGUI {
         final JButton save = new JButton("Save");
         canvas.add(save, BorderLayout.SOUTH);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setContentPane(canvas);
-
         save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
@@ -49,6 +46,9 @@ public final class SimpleGUI {
                 }
             }
         });
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setContentPane(canvas);
     }
 
     private void display() {
@@ -65,5 +65,4 @@ public final class SimpleGUI {
     public static void main(final String[] args) {
         new SimpleGUI(new Controller()).display();
     }
-
 }
