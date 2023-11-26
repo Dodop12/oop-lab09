@@ -71,7 +71,7 @@ public class BadIOGUI {
                  */
                 try (PrintStream ps = new PrintStream(PATH, StandardCharsets.UTF_8)) {
                     ps.print(randomGenerator.nextInt());
-                } catch (IOException e1) {
+                } catch (final IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace(); // NOPMD: allowed as this is just an exercise
                 }
@@ -80,13 +80,13 @@ public class BadIOGUI {
 
         read.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 try {
-                    List<String> lines = Files.readAllLines(Path.of(PATH));
+                    final List<String> lines = Files.readAllLines(Path.of(PATH));
                     for (final String line : lines) {
                         System.out.println(line);
                     }
-                } catch (IOException e1) {
+                } catch (final IOException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace();
                 }
