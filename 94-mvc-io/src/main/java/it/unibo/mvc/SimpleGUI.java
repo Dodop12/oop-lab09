@@ -20,7 +20,7 @@ public final class SimpleGUI {
 
     private static final int PROPORTION = 4;
 
-    private final JFrame frame = new JFrame();
+    private final JFrame frame = new JFrame("Print some text");
 
     public SimpleGUI(final Controller controller) {
         // Main panel
@@ -44,7 +44,7 @@ public final class SimpleGUI {
         buttonsPanel.add(printButton);
         printButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 controller.setNextStringToPrint(textField.getText());
                 controller.printCurrentString();
             }
@@ -54,7 +54,7 @@ public final class SimpleGUI {
         buttonsPanel.add(showHistoryButton);
         showHistoryButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(final ActionEvent e) {
                 for (final String string : controller.getPrintedStringsHistory()) {
                     textArea.append(string + '\n'); // Show one string per line in the textArea
                 }
@@ -76,7 +76,7 @@ public final class SimpleGUI {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         new SimpleGUI(new SimpleController()).display();
     }
 }
