@@ -1,6 +1,7 @@
 package it.unibo.mvc;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,7 +31,7 @@ public final class SimpleController implements Controller {
 
     @Override
     public List<String> getPrintedStringsHistory() {
-        return stringHistory;
+        return Collections.unmodifiableList(stringHistory);
     }
 
     @Override
