@@ -9,7 +9,7 @@ import java.util.List;
 public interface Controller {
 
     /**
-     * Sets the next string to print
+     * Sets the next string to print.
      * 
      * @throws NullPointerException if the string is null
      * @param nextString
@@ -28,7 +28,7 @@ public interface Controller {
     List<String> getPrintedStringsHistory();
 
     /**
-     * Print the last string set
+     * Print the last string set.
      * 
      * @throws IllegalStateException if no strings are set
      */
